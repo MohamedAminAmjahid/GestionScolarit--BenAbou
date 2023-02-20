@@ -1,0 +1,61 @@
+﻿.form-container {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    box-shadow: 0 0 20px #333;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Form header */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    text-shadow: 1px 1px #ccc;
+}
+
+
+/* Form inputs */
+.form-container input[type="text"],
+.form-container input[type="password"] {
+    width: 600px;
+    height: 40px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* Form group container */
+.form-group {
+    text-align: center;
+}
+
+/* Form submit button */
+.form-container input[type="submit"] {
+    width: 600px;
+    background-color: #534cfa;
+    color: white;
+    padding: 8px 16px;
+    margin: 8px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}

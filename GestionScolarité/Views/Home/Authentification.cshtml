@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+
+    <h1>Bienvenue ESISA</h1>
+
+</div>
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/login.css">
+
+<div class="form-container">
+    <h2>Authentification</h2>
+    <h2>@ViewBag.t</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="Nom" name="Nom" placeholder="Enter votre Nom d'utilisateur">
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" id="ModePasse" name="ModePasse" placeholder="Entrer votre Mot de passe">
+
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Se connecter" class="btn btn-default" />
+        </div>
+    }
+    <span>
+        @Html.ActionLink("Vous êtes un nouveau etudiant?", "InscriptionEtudiant", "Etudiants")
+    </span>
+    <span>
+        @Html.ActionLink("Vous êtes un nouveau enseignant?", "InscriptionEnseignant", "Enseignants")
+    </span>
+    <span>
+        @Html.ActionLink("Vous êtes un nouveau administrateur?", "Create", "???")
+    </span>
+</div>
