@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.SessionState;
 
 namespace GestionScolarité.Controllers
 {
@@ -19,7 +20,7 @@ namespace GestionScolarité.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Authentification", "Home");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -30,6 +31,7 @@ namespace GestionScolarité.Controllers
             Utilisateur u = db.Utilisateurs.FirstOrDefault(item => item.Nom == nom && item.Password == ModePasse);
             if (u != null)
             {
+                Session["idE"] = u.Id;
                 FormsAuthentication.SetAuthCookie(u.Role, false);
                 if (u.Role == "Directeur")
                 {
@@ -43,7 +45,7 @@ namespace GestionScolarité.Controllers
                         ViewBag.t = "Votre compte est en cours de confirmation!!!";
                         return View();
                     }
-                    return RedirectToAction("Index", "Etudiants");
+                    return RedirectToAction("Editt", "Etudiants");
                 }
                 else if (u.Role == "Enseignant")
                 {

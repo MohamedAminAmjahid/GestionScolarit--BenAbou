@@ -88,3 +88,5 @@ C:\4emeAnne\s8\dotNet\GestionScolarité\GestionScolarité\bin\EntityFramework.dl
 C:\4emeAnne\s8\dotNet\GestionScolarité\GestionScolarité\bin\EntityFramework.SqlServer.dll
 C:\4emeAnne\s8\dotNet\GestionScolarité\GestionScolarité\bin\EntityFramework.xml
 C:\4emeAnne\s8\dotNet\GestionScolarité\GestionScolarité\bin\EntityFramework.SqlServer.xml
+C:\4emeAnne\s8\dotNet\GestionScolarité\GestionScolarité\obj\Debug\GestionScolarité.Migrations.migrations.resources
+C:\4emeAnne\s8\dotNet\GestionScolarité\GestionScolarité\obj\Debug\GestionScolarité.csproj.GenerateResource.cache

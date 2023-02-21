@@ -81,7 +81,7 @@ namespace GestionScolarité.Controllers
             List<String> liste = new List<String>();
             liste.Add("1er année");
             liste.Add("2éme année");
-            liste.Add("3éme annnée");
+            liste.Add("3éme année");
             liste.Add("M1");
             liste.Add("M2");
             ViewBag.Sections = new SelectList(liste);
@@ -107,9 +107,47 @@ namespace GestionScolarité.Controllers
             if (ModelState.IsValid)
             {
                 etudiant.Role = "Etudiant";
+                etudiant.Status = "Confirmé";
                 db.Entry(etudiant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            return View(etudiant);
+        }
+
+        public ActionResult Editt()
+        {
+            int id = int.Parse("" + Session["idE"]);
+            List<String> liste = new List<String>();
+            liste.Add("1er année");
+            liste.Add("2éme année");
+            liste.Add("3éme année");
+            liste.Add("M1");
+            liste.Add("M2");
+            ViewBag.Sections = new SelectList(liste);
+          
+            Etudiant etudiant = db.Etudiants.Find(id);
+            if (etudiant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(etudiant);
+        }
+
+        // POST: Etudiants/Edit/5
+        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
+        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editt([Bind(Include = "Id,Status,Section,Nom,Prenom,Role,Mail,Password")] Etudiant etudiant)
+        {
+            if (ModelState.IsValid)
+            {
+                etudiant.Role = "Etudiant";
+                etudiant.Status = "Confirmé";
+                db.Entry(etudiant).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Editt");
             }
             return View(etudiant);
         }

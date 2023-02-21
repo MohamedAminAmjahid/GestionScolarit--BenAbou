@@ -135,14 +135,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302202352192_migrations.cs" />
+    <Compile Include="Migrations\202302202352192_migrations.designer.cs">
+      <DependentUpon>202302202352192_migrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enseignant.cs" />
     <Compile Include="Models\Etudiant.cs" />
+    <Compile Include="Models\Matier.cs" />
     <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\GestionScolaritéContext-20230220180926.mdf" />
-    <Content Include="App_Data\GestionScolaritéContext-20230220180926_log.ldf" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -190,15 +194,19 @@
     <Content Include="Views\Etudiants\Details.cshtml" />
     <Content Include="Views\Etudiants\Edit.cshtml" />
     <Content Include="Views\Etudiants\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Etudiants\ListerEtudiant.cshtml" />
+    <Content Include="Views\Enseignants\ListerEnseignants.cshtml" />
     <Content Include="Views\Enseignants\InscriptionEnseignant.cshtml" />
+    <Content Include="Views\Enseignants\Create.cshtml" />
+    <Content Include="Views\Enseignants\Index.cshtml" />
     <Content Include="Views\Enseignants\Delete.cshtml" />
     <Content Include="Views\Enseignants\Details.cshtml" />
     <Content Include="Views\Enseignants\Edit.cshtml" />
-    <Content Include="Views\Enseignants\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Etudiants\ListerEtudiant.cshtml" />
+    <Content Include="Views\Enseignants\AddMatier.cshtml" />
+    <Content Include="Views\Enseignants\Matiers.cshtml" />
+    <Content Include="Views\Etudiants\Editt.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -211,6 +219,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202302202352192_migrations.resx">
+      <DependentUpon>202302202352192_migrations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

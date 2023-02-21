@@ -7,16 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "InscriptionEtudiant")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Section)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Nom)
         </th>
@@ -24,13 +18,16 @@
             @Html.DisplayNameFor(model => model.Prenom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Mail)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Section)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th></th>
     </tr>
@@ -39,25 +36,22 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Section)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Nom)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Prenom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Mail)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
                 @Html.ActionLink("EditSection", "Edit", new { id = item.Id }) |

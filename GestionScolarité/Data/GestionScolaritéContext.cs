@@ -24,5 +24,7 @@ namespace GestionScolarité.Data
         public System.Data.Entity.DbSet<GestionScolarité.Models.Etudiant> Etudiants { get; set; }
 
         public System.Data.Entity.DbSet<GestionScolarité.Models.Enseignant> Enseignants { get; set; }
+
+        public System.Data.Entity.DbSet<GestionScolarité.Models.Matier> Matiers { get; set; }
     }
 }

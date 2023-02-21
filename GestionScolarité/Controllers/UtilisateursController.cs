@@ -51,6 +51,7 @@ namespace GestionScolarité.Controllers
         {
             if (ModelState.IsValid)
             {
+                utilisateur.Section = "0";
                 db.Utilisateurs.Add(utilisateur);
                 db.SaveChanges();
                 return RedirectToAction("Index");

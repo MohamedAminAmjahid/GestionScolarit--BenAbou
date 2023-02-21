@@ -13,13 +13,14 @@ namespace GestionScolarité.Models
         public string Role { get; set; }
         public string Mail { get; set; }
         public string Password { get; set; }
-    
-    public Utilisateur()
+        public string Section { get; set; }
+
+        public Utilisateur()
         {
 
         }
 
-        public Utilisateur(int id,  string nom, string prenom, string role, string mail, string password)
+        public Utilisateur(int id,  string nom, string prenom, string role, string mail, string password, string section)
         {
             Id = id;
             Nom = nom;
@@ -27,6 +28,7 @@ namespace GestionScolarité.Models
             Role = role;
             Mail = mail;
             Password = password;
+            Section = section;
         }
         
       }

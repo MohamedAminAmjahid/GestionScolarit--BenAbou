@@ -11,13 +11,11 @@ namespace GestionScolarité.Models
         {
 
         }
-        public Etudiant(int id, string nom, string prenom, string role, string mail, string password,string status, string section):base(id, nom, prenom, role, mail, password)
+        public Etudiant(int id, string nom, string prenom, string role, string mail, string password,string status, string section):base(id, nom, prenom, role, mail, password, section)
         {
             this.Status= status;
-            this.Section= section;
         }
         public string Status { get; set; }
-        public string Section { get; set; }
 
     }
 }

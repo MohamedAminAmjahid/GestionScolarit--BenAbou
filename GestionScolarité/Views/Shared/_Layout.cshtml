@@ -25,12 +25,17 @@
                     @if (User.Identity.Name == "Directeur")
                     {
                         <li>@Html.ActionLink(User.Identity.Name, "")</li>
-                        <li>@Html.ActionLink("Lister Etudiants", "ListerEtudiant", "Etudiants")</li>
+                        <li>@Html.ActionLink("Etudiants", "ListerEtudiant", "Etudiants")</li>
+                        <li>@Html.ActionLink("Enseignants", "ListerEnseignants", "Enseignants")</li>
+
+
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                     }
                     else if (User.Identity.Name == "Etudiant")
                     {
                         <li>@Html.ActionLink(User.Identity.Name, "")</li>
+                        <li>@Html.ActionLink("Modifier Compte", "Editt", "Etudiants")</li>
+                        <li>@Html.ActionLink("Notes", "??", "??")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                     }
 
