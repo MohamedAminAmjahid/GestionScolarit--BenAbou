@@ -1,0 +1,307 @@
+﻿h2 {
+    font-weight: bold;
+    text-align: center;
+    color: #535cfa;
+}
+navbar {
+    text-align: center;
+    font-weight: bold;
+    color: #8e0936;
+    background-color: #1E1F25;
+}
+body {
+    background-color: silver;
+    background: linear-gradient(135deg, #808080, silver,silver, #808080);
+}
+
+.custom-select {
+    font-size: 15px;
+    color: silver;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    background-color: #1E1F25;
+    width: 300px;
+}
+    .custom-select > option {
+        background-color: #1E1F25;
+        color: silver;
+        border-radius: 20px;
+    }
+.calendar >th {
+    background-color: red;
+}
+.custom-label {
+    display: inline;
+    font-size: 15px;
+    color: #1E1F25;
+    font-weight: bold;
+}
+div {
+    text-align: center;
+}
+.tete {
+    background: #1E1F25;
+    color: #535cfa;
+    padding: 5px;
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 20px 0px black;
+}
+
+.panne-menu-items {
+    background: #1E1F25;
+    color: black;
+    padding: 10px;
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 20px 0px black;
+}
+    .panne-menu-items div {
+        padding: 10px;
+        margin: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        color:silver;
+    }
+    .panne-menu-items div:active {
+       
+        font-weight: bold;
+        border: 1px solid black;
+    }
+        .panne-menu-items div:hover {
+            cursor: pointer;
+            background-color: #535cfa;
+            color: silver;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .panne-menu-items div a {
+            text-decoration:none;
+            color: silver
+        }
+
+table {
+    background-color: lightgray;
+    margin: 0 auto;
+    width: 80%;
+    border: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 20px 0px black;
+    margin-bottom: 10px;
+}
+th {
+    color: white;
+    background-color: #1E1F25;
+    
+}
+td {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+
+}
+table, td, th {
+    border: none;
+    text-align:center;
+}
+    td:hover {
+        cursor: pointer;
+    }
+.table-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+tr:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding:10px;
+
+}
+span {
+    color: silver;
+    padding: 10px ;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+    span:hover {
+        cursor: pointer;
+        background-color: #535cfa;
+        color: silver;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        text-decoration: none;
+    }
+    span a {
+        color: silver;
+    }
+    span a:hover {
+        text-decoration: none;
+        color:silver;
+    }
+.buttons {
+    background: #1E1F25;
+    color: #724def;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 20px 0px black;
+}
+.buttons-bottom {
+    background: #1E1F25;
+    color: #724def;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 20px 0px black;
+    display: inline-block; 
+    text-align: center; 
+    width: auto; 
+    height: auto; 
+    margin: 0 auto; 
+}
+.pannel {
+    background: #1E1F25;
+    color: silver;
+}
+.form-group {
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+}
+    
+    
+
+.form-control {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    border: 1px solid;
+}
+
+.control-label {
+    font-weight: bold;
+}
+
+.text-danger {
+    color: red;
+}
+
+
+.form-horizontal {
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 10px 10px 10px 110px;
+    background-color: silver;
+    border: 1px solid silver;
+    box-shadow: 10px 10px 20px 0px black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 10px;
+}
+    
+
+/********************************************************************************************/
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dl-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+dt {
+    font-weight: bold;
+    margin-right: 1rem;
+    width: 20%;
+}
+
+dd {
+    margin-left: 1rem;
+    width: 80%;
+}
+
+/* Personnaliser le bouton de suppression */
+input[type="submit"] {
+    color: white;
+    padding: 0.5rem 1rem;
+    background-color: #1E1F25;
+    border: none;
+}
+    input[type="submit"] :hover {
+        background-color: #535cfa;
+        background: #535cfa;
+    }
+.pannel-data-delete {
+    background: #1E1F25;
+    color: silver;
+    padding: 10px 10px 10px 200px;
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 20px 0px black;
+}
+/***************************************************************************/
