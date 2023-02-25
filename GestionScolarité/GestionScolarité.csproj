@@ -127,14 +127,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministratifsController.cs" />
     <Compile Include="Controllers\EnseignantsController.cs" />
     <Compile Include="Controllers\EtudiantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Controllers\UtilisateursController.cs" />
     <Compile Include="Data\GestionScolaritéContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Administartif.cs" />
     <Compile Include="Models\Enseignant.cs" />
     <Compile Include="Models\Etudiant.cs" />
     <Compile Include="Models\Matier.cs" />
@@ -214,6 +217,17 @@
     <Content Include="Views\Enseignants\ListerEtudiantsNotes.cshtml" />
     <Content Include="Views\Enseignants\AssignerNoteD.cshtml" />
     <Content Include="Views\Enseignants\AfficherNoteD.cshtml" />
+    <Content Include="Views\Administratifs\Create.cshtml" />
+    <Content Include="Views\Administratifs\Delete.cshtml" />
+    <Content Include="Views\Administratifs\Details.cshtml" />
+    <Content Include="Views\Administratifs\Edit.cshtml" />
+    <Content Include="Views\Administratifs\Index.cshtml" />
+    <Content Include="Views\Etudiants\Create.cshtml" />
+    <Content Include="Views\Sections\Create.cshtml" />
+    <Content Include="Views\Sections\Delete.cshtml" />
+    <Content Include="Views\Sections\Details.cshtml" />
+    <Content Include="Views\Sections\Edit.cshtml" />
+    <Content Include="Views\Sections\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

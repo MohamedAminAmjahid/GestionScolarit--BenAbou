@@ -24,8 +24,8 @@
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>
-                                @Html.ActionLink("Editer", "EditSection", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
-                                @Html.ActionLink("Supprimer", "DeleteSection", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                                @Html.ActionLink("Editer", "Edit", "Sections", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                                @Html.ActionLink("Supprimer", "Delete", "Sections", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
                             </td>
                         </tr>
                     }

@@ -28,5 +28,7 @@ namespace GestionScolarité.Data
         public System.Data.Entity.DbSet<GestionScolarité.Models.Matier> Matiers { get; set; }
         public System.Data.Entity.DbSet<GestionScolarité.Models.Section> Sections { get; set; }
         public System.Data.Entity.DbSet<GestionScolarité.Models.Note> Motes { get; set; }
+
+        public System.Data.Entity.DbSet<GestionScolarité.Models.Administartif> Administartifs { get; set; }
     }
 }

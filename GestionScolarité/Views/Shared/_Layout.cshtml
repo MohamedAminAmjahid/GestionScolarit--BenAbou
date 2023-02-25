@@ -24,8 +24,9 @@
                     @if (User.Identity.Name == "Directeur")
                     {
                         <li>@Html.ActionLink(User.Identity.Name, "")</li>
-                        <li>@Html.ActionLink("Etudiants", "ListerEtudiant", "Etudiants")</li>
+                        <li>@Html.ActionLink("Etudiants", "Index", "Etudiants")</li>
                         <li>@Html.ActionLink("Enseignants", "ListerEnseignants", "Enseignants")</li>
+                        <li>@Html.ActionLink("Administratifs", "Index", "Administratifs")</li>
                         <li>@Html.ActionLink("Sections", "ListerSections", "Enseignants")</li>
                         <li>@Html.ActionLink("Matieres", "ListerMatieres", "Enseignants")</li>
 
@@ -38,11 +39,16 @@
                         <li>@Html.ActionLink("Notes", "??", "??")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                     }
-
                     else if (User.Identity.Name == "Enseignant")
                     {
                         <li>@Html.ActionLink(User.Identity.Name, "")</li>
                         <li>@Html.ActionLink("Matieres", "ListerMatieres", "Enseignants")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    }
+                    else if (User.Identity.Name == "Administratif")
+                    {
+                        <li>@Html.ActionLink(User.Identity.Name, "")</li>
+                        <li>@Html.ActionLink("Etudiants", "ListerEtudiant", "Etudiants")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                     }
                     else

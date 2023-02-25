@@ -70,7 +70,36 @@ namespace GestionScolarité.Controllers
                 etudiant.IdSection = 0;
                 db.Etudiants.Add(etudiant);
                 db.SaveChanges();
+                if (User.Identity.Name == "Administratif")
+                {
+                     return RedirectToAction("ListerEtudiant");
+                }
                 return RedirectToAction("Authentification", "Home");
+            }
+
+            return View(etudiant);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+       [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Status,Section,Nom,Prenom,Role,Mail,Password")] Etudiant etudiant)
+        {
+            if (ModelState.IsValid)
+            {
+                etudiant.Role = "Etudiant";
+                etudiant.Status = "Non confirmé";
+                etudiant.IdSection = 0;
+                db.Etudiants.Add(etudiant);
+                db.SaveChanges();
+                if(User.Identity.Name == "Directeur")
+                {
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("ListerEtudiant");
             }
 
             return View(etudiant);

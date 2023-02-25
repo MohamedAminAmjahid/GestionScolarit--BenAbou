@@ -36,7 +36,7 @@ namespace GestionScolarité.Controllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InscriptionEnseignant([Bind(Include = "Id,Tel,Nom,Prenom,Role,Mail,Password")] Enseignant enseignant)
+        public ActionResult InscriptionEnseignant(Enseignant enseignant)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace GestionScolarité.Controllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Tel,Nom,Prenom,Role,Mail,Password")] Enseignant enseignant)
+        public ActionResult Create(Enseignant enseignant)
         {
             if (ModelState.IsValid)
             {

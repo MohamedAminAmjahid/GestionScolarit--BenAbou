@@ -44,6 +44,7 @@ namespace GestionScolarité.Controllers
                     if (e.Status == "Non confirmé")
                     {
                         ViewBag.t = "Votre compte est en cours de confirmation!!!";
+                        FormsAuthentication.SignOut();
                         return View();
                     }
                     return RedirectToAction("Editt", "Etudiants");
@@ -53,9 +54,9 @@ namespace GestionScolarité.Controllers
                     return RedirectToAction("About", "Home");
                     
                 }
-                else if (u.Role == "Administration")
+                else if (u.Role == "Administratif")
                 {
-                    return RedirectToAction("Index", "Utilisateurs");
+                    return RedirectToAction("ListerEtudiant", "Etudiants");
                 }
             }
             ViewBag.t = "Nom ou mode passe est incorrecte!!!";
