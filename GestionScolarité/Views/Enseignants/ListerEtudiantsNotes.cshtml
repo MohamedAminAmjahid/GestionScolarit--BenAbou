@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GestionScolarité.Models.Etudiant>
+
+@{
+    ViewBag.Title = "ListerEtudiantsNotes";
+}
+
+<h2 class="text-center">Liste des étudiants</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Nom)</th>
+                        <th>@Html.DisplayNameFor(model => model.Prenom)</th>
+                        <th>@Html.DisplayNameFor(model => model.Mail)</th>
+                        <th>@Html.DisplayNameFor(model => model.IdSection)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Nom)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Prenom)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Mail)</td>
+                            <td>@Html.DisplayFor(modelItem => item.IdSection)</td>
+                            <td>
+                                @Html.ActionLink("Assigner Note", "AssignerNoteD", new { idEt = item.Id, idMatiere = ViewBag.MatiereId }, new { @class = "btn btn-primary btn-sm" })
+                                @Html.ActionLink("Afficher Note", "AfficherNoteD", new { idEt = item.Id, idMatiere = ViewBag.MatiereId }, new { @class = "btn btn-info btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

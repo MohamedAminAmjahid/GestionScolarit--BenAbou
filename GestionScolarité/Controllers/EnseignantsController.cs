@@ -84,7 +84,7 @@ namespace GestionScolarité.Controllers
                 enseignant.IdSection = 0;
                 db.Enseignants.Add(enseignant);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListerEnseignants");
             }
 
             return View(enseignant);
@@ -201,7 +201,7 @@ namespace GestionScolarité.Controllers
             Enseignant enseignant = db.Enseignants.Find(id);
             db.Utilisateurs.Remove(enseignant);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListerEnseignants");
         }
 
         protected override void Dispose(bool disposing)
@@ -239,6 +239,91 @@ namespace GestionScolarité.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult ListerSections()
+        {
+            return View(db.Sections.ToList());
+        }
+
+        public ActionResult AddSection()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddSection([Bind(Include = "Id,Name")] Section section)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Sections.Add(section);
+                db.SaveChanges();
+                return RedirectToAction("ListerSections");
+            }
+
+            return View(section);
+        }
+
+        public ActionResult ListerMatieres()
+        {
+            int ids = int.Parse(Session["idE"].ToString());
+            if (db.Utilisateurs.Find(ids).Role == "Directeur")
+            {
+                return View(db.Matiers.ToList());
+            }
+            else
+            {
+                return View(db.Matiers.Where(m => m.IdEnseignant == ids).ToList());
+            }
+        }
+
+        public ActionResult AddMatiere()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddMatiere([Bind(Include = "Id,Name")] Matier matiere)
+        {
+            if (ModelState.IsValid)
+            {
+                matiere.Status = "Notaffected";
+                db.Matiers.Add(matiere);
+                db.SaveChanges();
+                return RedirectToAction("ListerMatieres");
+            }
+
+            return View(matiere);
+        }
+
+        public ActionResult ListerEtudiantsNotes(int id)
+        {
+                int sectionId = db.Matiers.Where(m => m.Id == id).Select(m => m.IdSection).SingleOrDefault();
+                var etudiants = db.Etudiants.Where(e => e.IdSection == sectionId).ToList();
+                ViewBag.SectionId = sectionId;
+                ViewBag.MatiereId = id;
+                return View(etudiants);
+           
+        }
+
+        public ActionResult AssignerNoteD()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AssignerNoteD([Bind(Include = "Id,Marque,IdEtudiant,IdMatiere")] Note note)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Motes.Add(note);
+                db.SaveChanges();
+                return RedirectToAction("ListerMatieres");
+            }
+
+            return View(note);
+        }
+
+        public ActionResult AfficherNoteD()
+        {
+            return View(db.Motes.ToList());
         }
     }
 }

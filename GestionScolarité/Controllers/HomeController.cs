@@ -29,6 +29,7 @@ namespace GestionScolarité.Controllers
             string nom = collection["Nom"];
             string ModePasse = collection["ModePasse"];
             Utilisateur u = db.Utilisateurs.FirstOrDefault(item => item.Nom == nom && item.Password == ModePasse);
+            
             if (u != null)
             {
                 Session["idE"] = u.Id;
@@ -49,7 +50,8 @@ namespace GestionScolarité.Controllers
                 }
                 else if (u.Role == "Enseignant")
                 {
-                    return RedirectToAction("Index", "Enseignants");
+                    return RedirectToAction("About", "Home");
+                    
                 }
                 else if (u.Role == "Administration")
                 {

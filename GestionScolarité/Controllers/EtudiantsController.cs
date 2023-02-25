@@ -24,10 +24,6 @@ namespace GestionScolarité.Controllers
         {
             return View(db.Etudiants.ToList());
         }
-        public ActionResult ListerSections()
-        {
-            return View(db.Sections.ToList());
-        }
         
         public ActionResult Confirmer(int id)
         {
@@ -83,13 +79,7 @@ namespace GestionScolarité.Controllers
         // GET: Etudiants/Edit/5
         public ActionResult Edit(int? id)
         {
-            List<String> liste = new List<String>();
-            liste.Add("1er année");
-            liste.Add("2éme année");
-            liste.Add("3éme année");
-            liste.Add("M1");
-            liste.Add("M2");
-            ViewBag.Sections = new SelectList(liste);
+            ViewBag.Sections = new SelectList(db.Sections, "Id", "Name");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,7 +97,7 @@ namespace GestionScolarité.Controllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Status,Section,Nom,Prenom,Role,Mail,Password")] Etudiant etudiant)
+        public ActionResult Edit([Bind(Include = "Id, Nom, Prenom, Mail, Password,IdSection,Status")] Etudiant etudiant)
         {
             if (ModelState.IsValid)
             {
@@ -115,7 +105,7 @@ namespace GestionScolarité.Controllers
                 etudiant.Status = "Confirmé";
                 db.Entry(etudiant).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListerEtudiant");
             }
             return View(etudiant);
         }
@@ -180,7 +170,7 @@ namespace GestionScolarité.Controllers
             Etudiant etudiant = db.Etudiants.Find(id);
             db.Etudiants.Remove(etudiant);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListerEtudiant");
         }
 
         protected override void Dispose(bool disposing)
@@ -192,44 +182,7 @@ namespace GestionScolarité.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult AddSection()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddSection([Bind(Include = "Id,Name")] Section section)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Sections.Add(section);
-                db.SaveChanges();
-                return RedirectToAction("ListerSections");
-            }
-
-            return View(section);
-        }
-
-        public ActionResult ListerMatieres()
-        {
-            return View(db.Matiers.ToList());
-        }
-
-        public ActionResult AddMatiere()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddMatiere([Bind(Include = "Id,Name")] Matier  matiere)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Matiers.Add(matiere);
-                db.SaveChanges();
-                return RedirectToAction("ListerMatieres");
-            }
-
-            return View(matiere);
-        }
+        
         
     }
 }

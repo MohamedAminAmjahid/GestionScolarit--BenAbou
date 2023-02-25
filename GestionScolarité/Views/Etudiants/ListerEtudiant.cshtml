@@ -1,65 +1,51 @@
 ﻿@model IEnumerable<GestionScolarité.Models.Etudiant>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liste des étudiants";
 }
 
-<h2>Index</h2>
+<div class="container my-5">
+    <h2>Liste des étudiants</h2>
 
-<p>
-    @Html.ActionLink("Create New", "InscriptionEtudiant")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prenom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdSection)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Inscrire un nouvel étudiant", "InscriptionEtudiant")
+    </p>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prenom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdSection)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("EditSection", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })  |
-                @Html.ActionLink("Confirmer", "Confirmer", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Section</th>
+                    <th>Adresse e-mail</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Nom)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Prenom)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdSection)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Mail)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            <div class="d-flex">
+                                @Html.ActionLink("Détails", "Details", new { id = item.Id }, new { @class = "btn btn-primary me-2" })
+                                @Html.ActionLink("Affecter Section", "Edit", new { id = item.Id }, new { @class = "btn btn-warning me-2" })
+                                @Html.ActionLink("Supprimer", "Delete", new { id = item.Id }, new { @class = "btn btn-danger me-2", onclick = "return confirm('Voulez-vous vraiment supprimer cet étudiant ?')" })
+                                @if (item.Status == "Non confirmé")
+                                {
+                                    @Html.ActionLink("Confirmer", "Confirmer", new { id = item.Id }, new { @class = "btn btn-primary me-2" })
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
