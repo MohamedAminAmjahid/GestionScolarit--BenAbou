@@ -1,0 +1,366 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using GestionScolarité.Data;
+using GestionScolarité.Models;
+
+namespace GestionScolarité.Controllers
+{
+    public class EnseignantsController : Controller
+    {
+        private GestionScolaritéContext db = new GestionScolaritéContext();
+
+        // GET: Enseignants
+        public ActionResult Index()
+        {
+            return View(db.Enseignants.ToList());
+        }
+        public ActionResult ListerEnseignants()
+        {
+            return View(db.Enseignants.ToList());
+        }
+
+        public ActionResult InscriptionEnseignant()
+        {
+            return View();
+        }
+
+        // POST: Enseignants/Create
+        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
+        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult InscriptionEnseignant(Enseignant enseignant)
+        {
+            if (ModelState.IsValid)
+            {
+                enseignant.Role = "Enseignant";
+                enseignant.IdSection = 0;
+                db.Enseignants.Add(enseignant);
+                db.SaveChanges();
+                return RedirectToAction("Authentification", "Home");
+            }
+
+            return View(enseignant);
+        }
+
+        // GET: Enseignants/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Enseignant enseignant = db.Enseignants.Find(id);
+            if (enseignant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(enseignant);
+        }
+
+       
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Enseignants/Create
+        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
+        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Enseignant enseignant)
+        {
+            if (ModelState.IsValid)
+            {
+                enseignant.Role = "Enseignant";
+                enseignant.IdSection = 0;
+                db.Enseignants.Add(enseignant);
+                db.SaveChanges();
+                return RedirectToAction("ListerEnseignants");
+            }
+
+            return View(enseignant);
+        }
+       
+        
+        public ActionResult AddMatier(int? id)
+        {
+            Session["id"] = id;
+            List<String> liste = new List<String>();
+            liste.Add("Algorithmique");
+            liste.Add("Technologies dotNet");
+            liste.Add("Java avancé");
+            liste.Add("Python");
+            liste.Add("Android");
+            liste.Add("Analyse donnée");
+            liste.Add("Business Intelligence");
+            liste.Add("C/C++");
+            liste.Add("Analyse Numérique");
+            liste.Add("Oracle");
+            ViewBag.Matiers = new SelectList(liste);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Enseignant enseignant = db.Enseignants.Find(id);
+
+            Session["section"] = enseignant.IdSection;
+            if (enseignant == null)
+            {
+                return HttpNotFound();
+            }
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddMatier(Matier matier)
+        {
+            if (ModelState.IsValid)
+            {
+                int id = int.Parse(Session["id"] + "");
+                matier.IdEnseignant = id;
+                /// Wliiiii choufiiiiihhhaaaaaaaaaaaaaa
+                matier.IdSection = 0;
+                db.Matiers.Add(matier);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(matier);
+        }
+
+        public ActionResult Matiers(int id)
+        {
+            return View(db.Matiers.Where(item => item.IdEnseignant == id));
+        }
+        public ActionResult Edit(int? id)
+        {
+            List<String> liste = new List<String>();
+            liste.Add("1er année");
+            liste.Add("2éme année");
+            liste.Add("3éme année");
+            liste.Add("M1");
+            liste.Add("M2");
+            ViewBag.Sections = new SelectList(liste);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Enseignant enseignant = db.Enseignants.Find(id);
+            if (enseignant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(enseignant);
+        }
+
+        // POST: Etudiants/Edit/5
+        // Pour vous protéger des attaques par survalidation, activez les propriétés spécifiques auxquelles vous souhaitez vous lier. Pour 
+        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit( Enseignant enseignant)
+        {
+            if (ModelState.IsValid)
+            {
+                enseignant.Role = "Enseignant";
+                db.Entry(enseignant).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(enseignant);
+        }
+
+        // GET: Enseignants/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Enseignant enseignant = db.Enseignants.Find(id);
+            if (enseignant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(enseignant);
+        }
+
+        // POST: Enseignants/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Enseignant enseignant = db.Enseignants.Find(id);
+            db.Utilisateurs.Remove(enseignant);
+            db.SaveChanges();
+            return RedirectToAction("ListerEnseignants");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+        public ActionResult AffecterMatiere(int id)
+        {
+            // ViewBag.Matiers = new SelectList(db.Matiers.Where(m => m.Status == "Notaffected"), "Id", "Name");
+            ViewBag.Sections = new SelectList(db.Sections, "Id", "Name");
+            ViewBag.Matiers = new SelectList(db.Matiers, "Id", "Name");
+            ViewBag.IdE = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AffecterMatiere(Matier matiere)
+        {
+            if (ModelState.IsValid)
+            {
+                Matier matiereToUpdate = db.Matiers.Find(matiere.Id);
+
+                if (matiereToUpdate != null)
+                {
+                    matiereToUpdate.IdSection = matiere.IdSection;
+                    matiereToUpdate.IdEnseignant = matiere.IdEnseignant;
+                    matiereToUpdate.Status = "affected";
+
+                    db.SaveChanges();
+                    return RedirectToAction("ListerEnseignants");
+                }
+            }
+            return View();
+        }
+
+        public ActionResult ListerSections()
+        {
+            return View(db.Sections.ToList());
+        }
+
+        public ActionResult AddSection()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddSection([Bind(Include = "Id,Name")] Section section)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Sections.Add(section);
+                db.SaveChanges();
+                return RedirectToAction("ListerSections");
+            }
+
+            return View(section);
+        }
+
+        public ActionResult ListerMatieres()
+        {
+            int ids = int.Parse(Session["idE"].ToString());
+            if (db.Utilisateurs.Find(ids).Role == "Directeur")
+            {
+                return View(db.Matiers.ToList());
+            }
+            else
+            {
+                return View(db.Matiers.Where(m => m.IdEnseignant == ids).ToList());
+            }
+        }
+
+        public ActionResult AddMatiere()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddMatiere([Bind(Include = "Id,Name")] Matier matiere)
+        {
+            if (ModelState.IsValid)
+            {
+                matiere.Status = "Notaffected";
+                db.Matiers.Add(matiere);
+                db.SaveChanges();
+                return RedirectToAction("ListerMatieres");
+            }
+
+            return View(matiere);
+        }
+
+        public ActionResult ListerEtudiantsNotes(int id)
+        {
+                int sectionId = db.Matiers.Where(m => m.Id == id).Select(m => m.IdSection).SingleOrDefault();
+                var etudiants = db.Etudiants.Where(e => e.IdSection == sectionId).ToList();
+                ViewBag.SectionId = sectionId;
+                ViewBag.MatiereId = id;
+                return View(etudiants);
+           
+        }
+
+        public ActionResult AssignerNoteD()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AssignerNoteD([Bind(Include = "Id,Marque,IdEtudiant,IdMatiere")] Note note)
+        {
+            if (ModelState.IsValid)
+            {
+                Note existingNote = db.Motes.FirstOrDefault(n => n.IdEtudiant == note.IdEtudiant && n.IdMatiere == note.IdMatiere);
+
+                if (existingNote != null)
+                {
+                    existingNote.Marque = note.Marque;
+                    db.Entry(existingNote).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.Motes.Add(note);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("ListerMatieres");
+            }
+            return View(note);
+        }
+
+
+        public ActionResult AfficherNoteD()
+        {
+            return View(db.Motes.ToList());
+        }
+
+        public ActionResult Editt()
+        {
+            int id = int.Parse("" + Session["idE"]);
+
+            Enseignant e = db.Enseignants.Find(id);
+            if (e == null)
+            {
+                return HttpNotFound();
+            }
+            return View(e);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editt([Bind(Include = "Id,Nom,Prenom,Tel,Mail,Password,Specialite")] Enseignant e)
+        {
+            if (ModelState.IsValid)
+            {
+                e.Role = "Enseignant";
+                db.Entry(e).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Editt");
+            }
+            return View(e);
+        }
+    }
+}

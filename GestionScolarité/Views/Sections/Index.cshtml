@@ -1,0 +1,36 @@
+﻿@model IEnumerable<GestionScolarité.Models.Section>
+
+@{
+    ViewBag.Title = "ListerSections";
+}
+
+<h2 class="text-center">Liste des sections</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                @Html.ActionLink("Ajouter une section", "Create", null, new { @class = "btn btn-primary" })
+            </p>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>
+                                @Html.ActionLink("Editer", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                                @Html.ActionLink("Supprimer", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

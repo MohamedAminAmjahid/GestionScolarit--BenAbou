@@ -1,0 +1,23 @@
+﻿@model IEnumerable<GestionScolarité.Models.Matier>
+
+@{
+    ViewBag.Title = "Liste des matières";
+}
+
+<h2>Liste des matières</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nom</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            </tr>
+        }
+    </tbody>
+</table>

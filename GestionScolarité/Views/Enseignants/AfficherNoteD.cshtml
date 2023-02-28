@@ -1,0 +1,21 @@
+﻿@model IEnumerable<GestionScolarité.Models.Note>
+
+@{
+    ViewBag.Title = "AfficherNoteD";
+}
+@{
+    int idEtudiant = int.Parse(Request.QueryString["idEt"]);
+    int idMatiere = int.Parse(Request.QueryString["idMatiere"]);
+
+    var note = Model.FirstOrDefault(n => n.IdEtudiant == idEtudiant && n.IdMatiere == idMatiere);
+}
+<h2>Note : </h2>
+<table class="table">
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => note.Marque)
+            </td>
+        </tr>
+
+</table>
