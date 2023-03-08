@@ -4,10 +4,10 @@
     ViewBag.Title = "ListerEnseignants";
 }
 
-<h2>Liste des enseignants</h2>
+<h2 class="text-center">Liste des enseignants</h2>
 
 <p>
-    @Html.ActionLink("Ajouter un enseignant", "Create")
+    @Html.ActionLink("Ajouter un enseignant", "Create", null, new { @class = "btn btn-primary" })
 </p>
 
 <table class="table table-striped table-bordered">

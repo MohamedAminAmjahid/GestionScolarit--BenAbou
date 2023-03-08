@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Liste des étudiants</h2>
+<h2 class="text-center">Liste des étudiants</h2>
 
 <p>
-    @Html.ActionLink("Ajouter un étudiant", "Create")
+    @Html.ActionLink("Ajouter un étudiant", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table table-striped table-bordered">
     <thead>

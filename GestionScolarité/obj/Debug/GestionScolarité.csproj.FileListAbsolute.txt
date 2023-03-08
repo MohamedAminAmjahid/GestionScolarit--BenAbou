@@ -450,3 +450,5 @@ C:\4emeAnne\s8\dotNet\version5-GestionScolarite\GestionScolarit--BenAbou-version
 C:\4emeAnne\s8\dotNet\version5-GestionScolarite\GestionScolarit--BenAbou-version6-Amjahid\GestionScolarité\obj\Debug\GestionScolarité.csproj.CopyComplete
 C:\4emeAnne\s8\dotNet\version5-GestionScolarite\GestionScolarit--BenAbou-version6-Amjahid\GestionScolarité\obj\Debug\GestionScolarité.dll
 C:\4emeAnne\s8\dotNet\version5-GestionScolarite\GestionScolarit--BenAbou-version6-Amjahid\GestionScolarité\obj\Debug\GestionScolarité.pdb
+C:\4emeAnne\s8\dotNet\version5-GestionScolarite\GestionScolarit--BenAbou-version6-Amjahid\GestionScolarité\obj\Debug\GestionScolarité.Migrations.migrations.resources
+C:\4emeAnne\s8\dotNet\version5-GestionScolarite\GestionScolarit--BenAbou-version6-Amjahid\GestionScolarité\obj\Debug\GestionScolarité.csproj.GenerateResource.cache

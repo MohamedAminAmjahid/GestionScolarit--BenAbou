@@ -138,6 +138,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303071210405_migrations.cs" />
+    <Compile Include="Migrations\202303071210405_migrations.designer.cs">
+      <DependentUpon>202303071210405_migrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administartif.cs" />
     <Compile Include="Models\Enseignant.cs" />
     <Compile Include="Models\Etudiant.cs" />
@@ -255,6 +260,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202303071210405_migrations.resx">
+      <DependentUpon>202303071210405_migrations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -210,8 +210,22 @@ namespace GestionScolarité.Controllers
             Etudiant e = db.Etudiants.Find(ids);
             if (db.Utilisateurs.Find(ids).Role == "Etudiant")
             {
-                var m = db.Matiers.Where(n => n.Id == e.IdSection);
-                return View(m);
+                List<Matier> matiers = db.Matiers.ToList();
+                List<Note> notes = db.Motes.Where(n=> n.IdEtudiant == e.Id).ToList();
+                List<string> resultat = new List<string>();
+
+                string name = "";
+                for (int i = 0; i < notes.Count; i++)
+                {
+                    //name = db.Matiers.FirstOrDefault(ite => ite.Id == notes[i].IdMatiere);
+                    foreach (var item in matiers)
+                    {
+                        if (item.Id == notes[i].IdMatiere) name = item.Name;
+                    }
+                    resultat.Add(name + ";" + notes[i].Marque);
+                }
+                ViewBag.resultat = resultat;
+                return View(notes);
             }
             else
             {

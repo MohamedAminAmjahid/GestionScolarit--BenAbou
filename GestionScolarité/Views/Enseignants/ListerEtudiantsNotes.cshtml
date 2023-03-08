@@ -15,8 +15,6 @@
                         <th>@Html.DisplayNameFor(model => model.Prenom)</th>
                         <th>@Html.DisplayNameFor(model => model.Mail)</th>
                         <th>@Html.DisplayNameFor(model => model.IdSection)</th>
-                        <th>Note</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +29,6 @@
                             <td>@Html.DisplayFor(modelItem => item.Prenom)</td>
                             <td>@Html.DisplayFor(modelItem => item.Mail)</td>
                             <td>@Html.DisplayFor(modelItem => item.IdSection)</td>
-                            <td></td>
                             <td>
                                 @Html.ActionLink("Assigner Note", "AssignerNoteD", new { idEt = item.Id, idMatiere = ViewBag.MatiereId }, new { @class = "btn btn-primary btn-sm" })
                                 @Html.ActionLink("Afficher Note", "AfficherNoteD", new { idEt = item.Id, idMatiere = ViewBag.MatiereId }, new { @class = "btn btn-info btn-sm" })
